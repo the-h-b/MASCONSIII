@@ -1,0 +1,146 @@
+.basic-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.form-card {
+  flex: 2;
+  padding: 20px;
+  margin: auto;
+  background-color: rgb(216, 209, 209);
+  max-width: 1200px;
+}
+
+.header {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.subtext {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  margin-top: 15px;
+}
+
+.field-desc {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.secure-info {
+  background-color: #e5f9ee;
+  padding: 10px 15px;
+  border-left: 5px solid green;
+  font-size: 13px;
+  color: green;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.or-text {
+  color: #888;
+}
+
+.form-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.sidebar {
+  background-color: #0057d9;
+  color: white;
+  padding: 50px 30px;
+  width: 350px;
+}
+
+.sidebar h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.sidebar p {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.sidebar ul li.active {
+  font-weight: bold;
+  color: white;
+}
+
+.form-content {
+  flex: 1;
+  padding: 60px;
+  background-color: #fff;
+}
+
+.form-content h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.form-content p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.checkbox {
+  margin-top: 20px;
+}
+
+.legal-confirm {
+  font-weight: bold;
+}
+
+.info-banner {
+  background-color: #e6f9ec;
+  color: #028a0f;
+  padding: 10px 15px;
+  border-left: 4px solid #00b300;
+  margin-top: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.next-button {
+  margin-top: 30px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.next-button:hover {
+  background-color: #0056b3;
+}
