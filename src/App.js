@@ -10,6 +10,7 @@ import EntityDetail2 from './pages/EntityDetail2.jsx';
 import BankDetails from './pages/BankDetails.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Invoice from './pages/Invoice.jsx';
+import FinancingMain from './pages/FinancingMain.jsx';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/bank-details" element={<BankDetails />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/invoice" element={<Invoice />} />
+        <Route path="/financing" element={<FinancingMain />} />
         {/* <Route path="*" element={<div>404 Not Found</div>} /> */}
       </Routes>
     </Router>
