@@ -51,9 +51,14 @@ const BasicDetails = () => {
               id="mobile"
               type="tel"
               value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
+              onChange={(e) => {
+                // Allow only numbers
+                const numericValue = e.target.value.replace(/\D/g, '');
+                setMobile(numericValue);
+              }}
               placeholder="888 888 8888"
               required
+              maxLength={10}
             />
             <p className="text-sm text-gray-500 mt-2">
               Please enter a valid mobile number. OTP will be shared on this number for verification.

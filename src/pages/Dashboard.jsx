@@ -11,6 +11,10 @@ const Dashboard = () => {
   const goToInvoice = () => {
     navigate("/invoice");
   };
+  
+  const goToFinancing = () => {
+    navigate("/financing");
+  };
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
@@ -22,7 +26,7 @@ const Dashboard = () => {
         <nav className="flex items-center space-x-8 text-sm font-medium text-gray-700">
           <a href="#" className="text-blue-600">Dashboard</a>
           <a href="#" onClick={(e) => { e.preventDefault(); goToInvoice(); }}>Invoices</a>
-          <a href="#">Financing</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); goToFinancing(); }}>Financing</a>
           <a href="#">Analytics</a>
           <a href="#" onClick={(e) => { e.preventDefault(); goToBankDetails(); }}>Bank Details</a>
           <a href="#">Settings</a>

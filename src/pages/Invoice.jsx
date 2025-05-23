@@ -11,6 +11,18 @@ const Invoice = () => {
   const goToDashboard = () => {
     navigate('/dashboard');
   };
+  
+  const goToFinancing = () => {
+    navigate('/financing');
+  };
+  
+  const goToInvoice = () => {
+    navigate('/invoice');
+  };
+  
+  const goToBankDetails = () => {
+    navigate('/bank-details');
+  };
 
   const addItem = () => {
     setItems([...items, { description: '', hsn: '', quantity: 1, rate: 0, tax: 0 }]);
@@ -54,18 +66,18 @@ const Invoice = () => {
   return (
     <div className="invoice-page">
       {/* Header */}
-      <header className="bg-white shadow px-6 py-4 flex justify-between items-center mb-4">
+      <header className="bg-white shadow px-6 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <div className="text-xl font-bold text-blue-600">MASCONSIII</div>
         </div>
 
         <nav className="flex items-center space-x-8 text-sm font-medium text-gray-700">
-          <a href="#" onClick={(e) => { e.preventDefault(); goToDashboard(); }}>Dashboard</a>
-          <a href="#" className="text-blue-600">Invoices</a>
-          <a href="#">Financing</a>
-          <a href="#">Analytics</a>
-          <a href="#">Bank Details</a>
-          <a href="#">Settings</a>
+          <button onClick={goToDashboard} className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Dashboard</button>
+          <button className="bg-transparent border-none text-blue-600 cursor-pointer font-medium">Invoices</button>
+          <button onClick={goToFinancing} className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Financing</button>
+          <button className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Analytics</button>
+          <button onClick={goToBankDetails} className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Bank Details</button>
+          <button className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Settings</button>
           <div className="flex items-center space-x-2 bg-gray-100 px-3 py-1 rounded-full">
             <span>HARSH BHUTRA</span>
             <span className="bg-purple-500 text-white text-xs px-2 py-0.5 rounded-full">Pro</span>
