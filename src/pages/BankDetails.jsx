@@ -11,17 +11,32 @@ const BankDetails = () => {
     // Add validation here if needed
     navigate("/e-sign"); // Assuming the next page is e-sign
   };
+  
+  const goToDashboard = () => {
+    navigate("/dashboard");
+  };
 
   return (
     <div className="flex min-h-screen bg-white">
       {/* Main Content */}
       <div className="flex-1 p-10">
-        <button 
-          className="text-blue-600 text-sm mb-6"
-          onClick={() => navigate('/entity-detail2')}
-        >
-          &lt; Back
-        </button>
+        <div className="flex justify-between items-center mb-6">
+          <button 
+            className="text-blue-600 text-sm"
+            onClick={() => navigate('/entity-detail2')}
+          >
+            &lt; Back
+          </button>
+          <button 
+            className="text-blue-600 text-sm flex items-center"
+            onClick={goToDashboard}
+          >
+            <span>Go to Dashboard</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
         <h2 className="text-2xl font-semibold mb-1">Bank Details</h2>
         <p className="text-sm text-gray-500 mb-6">Please Enter Your Bank Details</p>
 
@@ -179,6 +194,12 @@ const BankDetails = () => {
           </p>
         </div>
         <div className="flex items-center space-x-4">
+          <button 
+            onClick={goToDashboard}
+            className="border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm px-4 py-2 rounded"
+          >
+            Go to Dashboard
+          </button>
           <button 
             onClick={handleNext}
             className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded"
