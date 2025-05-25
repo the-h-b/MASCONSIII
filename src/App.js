@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Auth from './pages/Auth.jsx';
 import BasicDetails from './pages/BasicDetails.jsx';
 import BasicDetails1 from './pages/BasicDetails-1.jsx';
 import GSTSelection from './pages/SelectGST.jsx';
@@ -9,25 +10,77 @@ import EntityDetail1 from './pages/EntityDetail1.jsx';
 import EntityDetail2 from './pages/EntityDetail2.jsx';
 import BankDetails from './pages/BankDetails.jsx';
 import Dashboard from './pages/Dashboard.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
 import Invoice from './pages/Invoice.jsx';
 import FinancingMain from './pages/FinancingMain.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BasicDetails />} />
-        <Route path="/basic-details1" element={<BasicDetails1 />} />
-        <Route path="/gst-selection" element={<GSTSelection />} />
-        <Route path="/select-gst2" element={<SelectGST2 />} />
-        <Route path="/entity-detail" element={<EntityDetails />} />
-        <Route path="/entity-detail1" element={<EntityDetail1 />} />
-        <Route path="/entity-detail2" element={<EntityDetail2 />} />
-        <Route path="/bank-details" element={<BankDetails />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/invoice" element={<Invoice />} />
-        <Route path="/financing" element={<FinancingMain />} />
-        {/* <Route path="*" element={<div>404 Not Found</div>} /> */}
+        <Route path="/" element={<Auth />} />
+        <Route path="/basic-details" element={
+          <ProtectedRoute requiredRole="user">
+            <BasicDetails />
+          </ProtectedRoute>
+        } />
+        <Route path="/basic-details1" element={
+          <ProtectedRoute requiredRole="user">
+            <BasicDetails1 />
+          </ProtectedRoute>
+        } />
+        <Route path="/gst-selection" element={
+          <ProtectedRoute requiredRole="user">
+            <GSTSelection />
+          </ProtectedRoute>
+        } />
+        <Route path="/select-gst2" element={
+          <ProtectedRoute requiredRole="user">
+            <SelectGST2 />
+          </ProtectedRoute>
+        } />
+        <Route path="/entity-detail" element={
+          <ProtectedRoute requiredRole="user">
+            <EntityDetails />
+          </ProtectedRoute>
+        } />
+        <Route path="/entity-detail1" element={
+          <ProtectedRoute requiredRole="user">
+            <EntityDetail1 />
+          </ProtectedRoute>
+        } />
+        <Route path="/entity-detail2" element={
+          <ProtectedRoute requiredRole="user">
+            <EntityDetail2 />
+          </ProtectedRoute>
+        } />
+        <Route path="/bank-details" element={
+          <ProtectedRoute requiredRole="user">
+            <BankDetails />
+          </ProtectedRoute>
+        } />
+        <Route path="/dashboard" element={
+          <ProtectedRoute requiredRole="user">
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin-dashboard" element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminDashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/invoice" element={
+          <ProtectedRoute requiredRole="user">
+            <Invoice />
+          </ProtectedRoute>
+        } />
+        <Route path="/financing" element={
+          <ProtectedRoute requiredRole="user">
+            <FinancingMain />
+          </ProtectedRoute>
+        } />
+        <Route path="*" element={<Auth />} />
       </Routes>
     </Router>
   );
