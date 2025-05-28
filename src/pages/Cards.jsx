@@ -318,187 +318,95 @@ const Cards = () => {
 
   return (
     <AdminLayout title="Cards Management">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-900">Cards Management</h2>
-        <button 
-          onClick={() => setShowIssueCardModal(true)}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105 shadow-md"
-        >
-          Issue New Card
-        </button>
+      <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+        <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold text-gray-900">Cards Management</h2>
+        <div className="flex space-x-3">
+          <button 
+            onClick={() => customAlert('Assign Card functionality would be implemented here')}
+            className="px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-200 ease-in-out shadow-md"
+          >
+            Assign Card
+          </button>
+          <button 
+            onClick={() => setShowIssueCardModal(true)}
+            className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 ease-in-out shadow-md"
+          >
+            Issue New Card
+          </button>
+        </div>
       </div>
 
       {/* Card Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         {/* Total Cards Card */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
           <div>
-            <p className="text-gray-500 text-base">Total Cards</p>
-            <p className="text-3xl font-bold text-gray-900">12,500</p>
+            <p className="text-gray-500 text-sm">Total Cards</p>
+            <p className="text-2xl font-bold text-gray-900">12,500</p>
           </div>
-          <div className="bg-blue-100 p-4 rounded-full">
-            <svg className="h-7 w-7 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <div className="bg-blue-100 p-3 rounded-full">
+            <svg className="h-6 w-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" />
             </svg>
           </div>
         </div>
 
         {/* Active Cards Card */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
           <div>
-            <p className="text-gray-500 text-base">Active Cards</p>
-            <p className="text-3xl font-bold text-gray-900">8,125</p>
+            <p className="text-gray-500 text-sm">Active Cards</p>
+            <p className="text-2xl font-bold text-gray-900">8,125</p>
           </div>
-          <div className="bg-green-100 p-4 rounded-full">
-            <svg className="h-7 w-7 text-green-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <div className="bg-green-100 p-3 rounded-full">
+            <svg className="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
           </div>
         </div>
 
         {/* Cards Issued This Month Card */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
           <div>
-            <p className="text-gray-500 text-base">Cards Issued (This Month)</p>
-            <p className="text-3xl font-bold text-gray-900">1,250</p>
+            <p className="text-gray-500 text-sm">Cards Issued (Month)</p>
+            <p className="text-2xl font-bold text-gray-900">1,250</p>
           </div>
-          <div className="bg-purple-100 p-4 rounded-full">
-            <svg className="h-7 w-7 text-purple-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <div className="bg-purple-100 p-3 rounded-full">
+            <svg className="h-6 w-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
             </svg>
           </div>
         </div>
 
         {/* Transaction Volume Card */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
           <div>
-            <p className="text-gray-500 text-base">Transaction Volume</p>
-            <p className="text-3xl font-bold text-gray-900">₹6.25M</p>
+            <p className="text-gray-500 text-sm">Transaction Volume</p>
+            <p className="text-2xl font-bold text-gray-900">₹6.25M</p>
           </div>
-          <div className="bg-yellow-100 p-4 rounded-full">
-            <svg className="h-7 w-7 text-yellow-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <div className="bg-yellow-100 p-3 rounded-full">
+            <svg className="h-6 w-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
             </svg>
           </div>
         </div>
       </div>
-
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        {/* Card Issuance Over Time */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Card Issuance Over Time</h3>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={cardIssuanceData}
-                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e0e0e0" />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} />
-                <YAxis axisLine={false} tickLine={false} />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="physical" name="Physical Cards" fill="#8884d8" />
-                <Bar dataKey="virtual" name="Virtual Cards" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Card Status Distribution */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Card Status Distribution</h3>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={cardStatusData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={true}
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {cardStatusData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(value) => `${value}%`} />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Card Type Distribution */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Card Type Distribution</h3>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={cardTypeData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={true}
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {cardTypeData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(value) => `${value}%`} />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Card Usage Trends */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Card Usage Trends</h3>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <ComposedChart
-                data={cardUsageData}
-                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e0e0e0" />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} />
-                <YAxis yAxisId="left" axisLine={false} tickLine={false} />
-                <YAxis yAxisId="right" orientation="right" axisLine={false} tickLine={false} />
-                <Tooltip />
-                <Legend />
-                <Bar yAxisId="left" dataKey="transactions" name="Transactions" fill="#8884d8" />
-                <Area yAxisId="right" type="monotone" dataKey="volume" name="Volume (₹)" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.3} />
-                <Line yAxisId="right" type="monotone" dataKey="average" name="Avg. Transaction (₹)" stroke="#ff7300" />
-              </ComposedChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </div>
-
+      
       {/* Card List Table */}
-      <div className="bg-white rounded-xl shadow-lg p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-semibold text-gray-900">Card List</h3>
-          <div className="flex space-x-2">
+      <div className="bg-white rounded-lg shadow p-4 w-full">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3">
+          <h3 className="text-lg font-semibold text-gray-900">Card List</h3>
+          <div className="flex flex-wrap gap-2">
             <input 
               type="text" 
               placeholder="Search cards..." 
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 w-full md:w-auto"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <select 
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 w-full md:w-auto"
               value={cardTypeFilter}
               onChange={(e) => setCardTypeFilter(e.target.value)}
             >
@@ -508,7 +416,7 @@ const Cards = () => {
               <option value="Prepaid">Prepaid</option>
             </select>
             <select 
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 w-full md:w-auto"
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
             >
@@ -521,9 +429,11 @@ const Cards = () => {
             </select>
           </div>
         </div>
-        <div className="overflow-x-auto overflow-y-auto rounded-lg border border-gray-200 max-h-[600px]">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50 sticky top-0 z-10">
+        {/* Table container with horizontal scroll */}
+        <div className="border border-gray-200 rounded-lg w-full" style={{ maxHeight: 'calc(100vh - 300px)', overflow: 'hidden' }}>
+          <div className="overflow-x-auto overflow-y-auto w-full" style={{ maxHeight: 'inherit' }}>
+            <table className="min-w-full divide-y divide-gray-200 w-full">
+              <thead className="bg-gray-50 sticky top-0 z-10">
               <tr>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Card Number
@@ -610,19 +520,19 @@ const Cards = () => {
                     <div className="flex space-x-2">
                       <button 
                         onClick={() => handleViewCard(card)} 
-                        className="text-blue-600 hover:text-blue-900"
+                        className="text-blue-600 hover:text-blue-900 text-xs font-medium"
                       >
                         View
                       </button>
                       <button 
                         onClick={() => handleBlockCard(card)} 
-                        className="text-blue-600 hover:text-blue-900"
+                        className="text-blue-600 hover:text-blue-900 text-xs font-medium"
                       >
                         Block
                       </button>
                       <button 
                         onClick={() => handleDeleteCard(card)} 
-                        className="text-red-600 hover:text-red-900"
+                        className="text-red-600 hover:text-red-900 text-xs font-medium"
                       >
                         Delete
                       </button>
@@ -632,22 +542,39 @@ const Cards = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-end items-center mt-4 text-sm text-gray-600">
-          <span className="mr-2">Showing 1-8 of 12,500</span>
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-600">
+          <span className="mb-2 sm:mb-0">Showing {indexOfFirstCard + 1}-{Math.min(indexOfLastCard, filteredCards.length)} of {filteredCards.length} entries</span>
           <div className="flex space-x-1">
-            <button className="px-3 py-1 rounded-md border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out">{'<'}</button>
-            {[1, 2, 3, 4, 5].map(page => (
-              <button
-                key={page}
-                className={`px-3 py-1 rounded-md transition duration-200 ease-in-out ${page === 1 ? 'bg-blue-600 text-white shadow-md' : 'border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white'}`}
-              >
-                {page}
-              </button>
-            ))}
-            <button className="px-3 py-1 rounded-md border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out">{'>'}</button>
+            <button 
+              onClick={() => currentPage > 1 && paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              {'<'}
+            </button>
+            {Array.from({ length: Math.min(5, totalPages) }).map((_, i) => {
+              const pageNum = i + 1;
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => paginate(pageNum)}
+                  className={`px-2 py-1 rounded transition duration-200 ease-in-out ${pageNum === currentPage ? 'bg-blue-600 text-white shadow-md' : 'border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white'}`}
+                >
+                  {pageNum}
+                </button>
+              );
+            })}
+            <button 
+              onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              {'>'}
+            </button>
           </div>
         </div>
       </div>
@@ -950,6 +877,7 @@ const Cards = () => {
           </div>
         </div>
       )}
+      </div>
     </AdminLayout>
   );
 };
