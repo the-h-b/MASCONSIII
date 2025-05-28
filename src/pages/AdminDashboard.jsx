@@ -1,228 +1,222 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area
+} from 'recharts';
+import AdminLayout from '../components/AdminLayout';
+import { useSignOut } from '../utils/auth';
+
+const transactionVolumeData = [
+  { name: 'Monday', 'Transaction Volume': 1000 },
+  { name: 'Tuesday', 'Transaction Volume': 3000 },
+  { name: 'Wednesday', 'Transaction Volume': 5000 },
+  { name: 'Thursday', 'Transaction Volume': 2500 },
+  { name: 'Friday', 'Transaction Volume': 1800 },
+  { name: 'Saturday', 'Transaction Volume': 1500 },
+  { name: 'Sunday', 'Transaction Volume': 2200 },
+];
+
+const revenueGrowthData = [
+  { name: 'January', 'Revenue Growth (INR)': 12000 },
+  { name: 'February', 'Revenue Growth (INR)': 15000 },
+  { name: 'March', 'Revenue Growth (INR)': 13000 },
+  { name: 'April', 'Revenue Growth (INR)': 20000 },
+  { name: 'May', 'Revenue Growth (INR)': 28000 },
+  { name: 'June', 'Revenue Growth (INR)': 35000 },
+  { name: 'July', 'Revenue Growth (INR)': 40000 },
+];
+
+const recentTransactionsData = [
+  { date: '15/05/2025, 04:20 pm', merchant: 'ABC Corp', amount: '100.00', currency: 'INR', type: 'DEBIT' },
+  { date: '14/05/2025, 03:25 pm', merchant: 'XYZ Services', amount: '10,000.00', currency: 'INR', type: 'CREDIT' },
+  { date: '14/05/2025, 03:24 pm', merchant: 'Retail Store', amount: '10,000.00', currency: 'INR', type: 'DEBIT' },
+  { date: '14/05/2025, 01:18 pm', merchant: 'Online Shop', amount: '10,000.00', currency: 'INR', type: 'CREDIT' },
+  { date: '14/05/2025, 12:22 pm', merchant: 'Food Delivery', amount: '10,000.00', currency: 'INR', type: 'DEBIT' },
+  { date: '13/05/2025, 06:14 pm', merchant: 'Utility Bill', amount: '10,000.00', currency: 'INR', type: 'DEBIT' },
+  { date: '13/05/2025, 06:10 pm', merchant: 'Gym Membership', amount: '20,000.00', currency: 'INR', type: 'CREDIT' },
+  { date: '09/05/2025, 05:20 pm', merchant: 'Subscription', amount: '500.00', currency: 'INR', type: 'DEBIT' },
+  { date: '09/05/2025, 05:01 pm', merchant: 'Travel Agency', amount: '15,000.00', currency: 'INR', type: 'CREDIT' },
+  { date: '09/05/2025, 04:50 pm', merchant: 'Pharmacy', amount: '250.00', currency: 'INR', type: 'DEBIT' },
+];
 
 const AdminDashboard = () => {
-  const navigate = useNavigate();
-
-  // Check if user is logged in as admin
-  useEffect(() => {
-    const userRole = localStorage.getItem('userRole');
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    
-    if (!isLoggedIn || userRole !== 'admin') {
-      navigate('/');
-    }
-  }, [navigate]);
-
-  const handleSignOut = () => {
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('isLoggedIn');
-    navigate('/');
-  };
-
   return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <h1 className="text-2xl font-bold text-blue-600">MASCONSIII</h1>
-              </div>
-              <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <a href="#" className="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Dashboard
-                </a>
-                <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Users
-                </a>
-                <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Reports
-                </a>
-                <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Settings
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <button
-                onClick={handleSignOut}
-                className="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Sign Out
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <AdminLayout title="Super Admin">
+      <h2 className="text-3xl font-bold text-gray-900 mb-6">Dashboard</h2>
+      <p className="text-lg text-gray-700 mb-8">Hi, Masccons Admin 👋</p>
 
-      <div className="py-10">
-        <header>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-          </div>
-        </header>
-        <main>
-          <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div className="px-4 py-8 sm:px-0">
-              <div className="border-4 border-dashed border-gray-200 rounded-lg p-6">
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {/* Dashboard Card 1 */}
-                  <div className="bg-white overflow-hidden shadow rounded-lg">
-                    <div className="p-5">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                          <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                          </svg>
-                        </div>
-                        <div className="ml-5 w-0 flex-1">
-                          <dl>
-                            <dt className="text-sm font-medium text-gray-500 truncate">Total Users</dt>
-                            <dd>
-                              <div className="text-lg font-medium text-gray-900">24,583</div>
-                            </dd>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-gray-50 px-5 py-3">
-                      <div className="text-sm">
-                        <a href="#" className="font-medium text-blue-600 hover:text-blue-500">View all</a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Dashboard Card 2 */}
-                  <div className="bg-white overflow-hidden shadow rounded-lg">
-                    <div className="p-5">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 bg-green-500 rounded-md p-3">
-                          <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                          </svg>
-                        </div>
-                        <div className="ml-5 w-0 flex-1">
-                          <dl>
-                            <dt className="text-sm font-medium text-gray-500 truncate">Total Revenue</dt>
-                            <dd>
-                              <div className="text-lg font-medium text-gray-900">$24,583.00</div>
-                            </dd>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-gray-50 px-5 py-3">
-                      <div className="text-sm">
-                        <a href="#" className="font-medium text-blue-600 hover:text-blue-500">View details</a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Dashboard Card 3 */}
-                  <div className="bg-white overflow-hidden shadow rounded-lg">
-                    <div className="p-5">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 bg-red-500 rounded-md p-3">
-                          <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                          </svg>
-                        </div>
-                        <div className="ml-5 w-0 flex-1">
-                          <dl>
-                            <dt className="text-sm font-medium text-gray-500 truncate">Pending Approvals</dt>
-                            <dd>
-                              <div className="text-lg font-medium text-gray-900">12</div>
-                            </dd>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-gray-50 px-5 py-3">
-                      <div className="text-sm">
-                        <a href="#" className="font-medium text-blue-600 hover:text-blue-500">View all</a>
-                      </div>
-                    </div>
-                  </div>
+            {/* Metric Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {/* Total Prefund Card */}
+              <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <div>
+                  <p className="text-gray-500 text-base">Total Prefund</p>
+                  <p className="text-3xl font-bold text-gray-900">INR 0.00</p>
                 </div>
+                <div className="bg-blue-100 p-4 rounded-full">
+                  {/* Chart icon SVG */}
+                  <svg className="h-7 w-7 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-3.5-7.5a.5.5 0 011 0V11a.5.5 0 01-1 0v-1.5zm2.5-3a.5.5 0 011 0V11a.5.5 0 01-1 0V7.5zm2.5-3a.5.5 0 011 0V11a.5.5 0 01-1 0V4.5z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              </div>
 
-                <div className="mt-8">
-                  <h2 className="text-lg font-medium text-gray-900">Recent Activity</h2>
-                  <div className="mt-4 bg-white shadow overflow-hidden sm:rounded-md">
-                    <ul className="divide-y divide-gray-200">
-                      <li>
-                        <a href="#" className="block hover:bg-gray-50">
-                          <div className="px-4 py-4 sm:px-6">
-                            <div className="flex items-center justify-between">
-                              <p className="text-sm font-medium text-blue-600 truncate">New user registration</p>
-                              <div className="ml-2 flex-shrink-0 flex">
-                                <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                  Completed
-                                </p>
-                              </div>
-                            </div>
-                            <div className="mt-2 sm:flex sm:justify-between">
-                              <div className="sm:flex">
-                                <p className="flex items-center text-sm text-gray-500">
-                                  <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                                  </svg>
-                                  John Smith
-                                </p>
-                              </div>
-                              <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                                </svg>
-                                <p>
-                                  <time dateTime="2020-01-07">January 7, 2020</time>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="block hover:bg-gray-50">
-                          <div className="px-4 py-4 sm:px-6">
-                            <div className="flex items-center justify-between">
-                              <p className="text-sm font-medium text-blue-600 truncate">Invoice payment processed</p>
-                              <div className="ml-2 flex-shrink-0 flex">
-                                <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                  Completed
-                                </p>
-                              </div>
-                            </div>
-                            <div className="mt-2 sm:flex sm:justify-between">
-                              <div className="sm:flex">
-                                <p className="flex items-center text-sm text-gray-500">
-                                  <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                                  </svg>
-                                  $12,500.00
-                                </p>
-                              </div>
-                              <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                                </svg>
-                                <p>
-                                  <time dateTime="2020-01-07">January 7, 2020</time>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+              {/* Transaction Amount Card */}
+              <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <div>
+                  <p className="text-gray-500 text-base">Transaction Amount</p>
+                  <p className="text-3xl font-bold text-gray-900">INR 0.00</p>
+                </div>
+                <div className="bg-green-100 p-4 rounded-full">
+                  {/* Chart icon SVG */}
+                  <svg className="h-7 w-7 text-green-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-3.5-7.5a.5.5 0 011 0V11a.5.5 0 01-1 0v-1.5zm2.5-3a.5.5 0 011 0V11a.5.5 0 01-1 0V7.5zm2.5-3a.5.5 0 011 0V11a.5.5 0 01-1 0V4.5z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Active Customers Card */}
+              <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <div>
+                  <p className="text-gray-500 text-base">Active Customers</p>
+                  <p className="text-3xl font-bold text-gray-900">0</p>
+                </div>
+                <div className="bg-purple-100 p-4 rounded-full">
+                  {/* User group icon SVG */}
+                  <svg className="h-7 w-7 text-purple-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zm-6 9a3 3 0 100-6 3 3 0 000 6zm7-6a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Total Cards Card */}
+              <div className="bg-white rounded-xl shadow-lg p-6 flex items-center justify-between transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <div>
+                  <p className="text-gray-500 text-base">Total Cards</p>
+                  <p className="text-3xl font-bold text-gray-900">0</p>
+                </div>
+                <div className="bg-yellow-100 p-4 rounded-full">
+                  {/* Credit card icon SVG */}
+                  <svg className="h-7 w-7 text-yellow-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" />
+                  </svg>
                 </div>
               </div>
             </div>
-          </div>
-        </main>
-      </div>
-    </div>
+
+            {/* Charts Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+              {/* Transaction Volume Over Time Chart */}
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Transaction Volume Over Time</h3>
+                <div className="h-80"> {/* Fixed height for charts */}
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart
+                      data={transactionVolumeData}
+                      margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e0e0e0" />
+                      <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                      <YAxis axisLine={false} tickLine={false} />
+                      <Tooltip />
+                      <Legend />
+                      <Area type="monotone" dataKey="Transaction Volume" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+                      <defs>
+                        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                        </linearGradient>
+                      </defs>
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              {/* Revenue Growth Over Time Chart */}
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Revenue Growth Over Time</h3>
+                <div className="h-80"> {/* Fixed height for charts */}
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart
+                      data={revenueGrowthData}
+                      margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e0e0e0" />
+                      <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                      <YAxis axisLine={false} tickLine={false} />
+                      <Tooltip />
+                      <Legend />
+                      <Area type="monotone" dataKey="Revenue Growth (INR)" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+                      <defs>
+                        <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+                        </linearGradient>
+                      </defs>
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
+
+            {/* Recent Transactions Section */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold text-gray-900">Recent Transactions</h3>
+                <a href="#" className="text-blue-600 hover:text-blue-800 text-sm font-medium transition duration-200 ease-in-out hover:underline">View All</a>
+              </div>
+              <div className="overflow-x-auto rounded-lg border border-gray-200">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        TRANSACTION DATE
+                      </th>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        MERCHANT NAME
+                      </th>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        AMOUNT
+                      </th>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        TRANSACTION CURRENCY CODE
+                      </th>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        TRANSACTION TYPE
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {recentTransactionsData.map((transaction, index) => (
+                      <tr key={index} className="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transaction.date}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transaction.merchant}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transaction.amount}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transaction.currency}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transaction.type}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Pagination */}
+              <div className="flex justify-end items-center mt-4 text-sm text-gray-600">
+                <span className="mr-2">Showing Pages - 1/16</span>
+                <div className="flex space-x-1">
+                  <button className="px-3 py-1 rounded-md border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out">{'<'}</button>
+                  {[1, 2, 3, 4, 5].map(page => (
+                    <button
+                      key={page}
+                      className={`px-3 py-1 rounded-md transition duration-200 ease-in-out ${page === 1 ? 'bg-blue-600 text-white shadow-md' : 'border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white'}`}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                  <button className="px-3 py-1 rounded-md border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out">{'>'}</button>
+                </div>
+              </div>
+            </div>
+    </AdminLayout>
   );
 };
 
