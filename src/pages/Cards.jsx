@@ -6,7 +6,7 @@ import {
 import AdminLayout from '../components/AdminLayout';
 import { customAlert } from '../utils/auth';
 
-// Sample data for card issuance over time
+// Card issuance data
 const cardIssuanceData = [
   { month: 'Jan', physical: 1200, virtual: 800 },
   { month: 'Feb', physical: 1500, virtual: 1000 },
@@ -17,7 +17,7 @@ const cardIssuanceData = [
   { month: 'Jul', physical: 1800, virtual: 3000 },
 ];
 
-// Sample data for card status distribution
+// Card status distribution
 const cardStatusData = [
   { name: 'Active', value: 65 },
   { name: 'Inactive', value: 15 },
@@ -26,14 +26,14 @@ const cardStatusData = [
   { name: 'Pending', value: 2 },
 ];
 
-// Sample data for card type distribution
+// Card type distribution
 const cardTypeData = [
   { name: 'Debit', value: 45 },
   { name: 'Credit', value: 30 },
   { name: 'Prepaid', value: 25 },
 ];
 
-// Sample data for card usage trends
+// Card usage trends
 const cardUsageData = [
   { month: 'Jan', transactions: 5000, volume: 2500000, average: 500 },
   { month: 'Feb', transactions: 6200, volume: 3100000, average: 500 },
@@ -44,7 +44,7 @@ const cardUsageData = [
   { month: 'Jul', transactions: 12500, volume: 6250000, average: 500 },
 ];
 
-// Sample data for card list
+// Card list data
 const cardListData = [
   { 
     id: 1, 
@@ -192,29 +192,29 @@ const cardListData = [
   },
 ];
 
-// Colors for pie charts
+// Chart colors
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#FF0000'];
 
 const Cards = () => {
-  // Modal states
+  // States
   const [showIssueCardModal, setShowIssueCardModal] = useState(false);
   const [showViewCardModal, setShowViewCardModal] = useState(false);
   const [showBlockCardModal, setShowBlockCardModal] = useState(false);
   const [showDeleteCardModal, setShowDeleteCardModal] = useState(false);
   
-  // Selected card for operations
+
   const [selectedCard, setSelectedCard] = useState(null);
   
-  // Search and filter states
+
   const [searchTerm, setSearchTerm] = useState('');
   const [cardTypeFilter, setCardTypeFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   
-  // Pagination state
+
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 8;
   
-  // New card form state
+
   const [newCard, setNewCard] = useState({
     cardholderName: '',
     firstName: '',
@@ -231,7 +231,7 @@ const Cards = () => {
     cardHashId: ''
   });
 
-  // Handle issue new card
+
   const handleIssueCard = (e) => {
     e.preventDefault();
     // In a real app, this would send data to an API
@@ -255,25 +255,25 @@ const Cards = () => {
     });
   };
   
-  // Handle view card details
+
   const handleViewCard = (card) => {
     setSelectedCard(card);
     setShowViewCardModal(true);
   };
   
-  // Handle block card
+
   const handleBlockCard = (card) => {
     setSelectedCard(card);
     setShowBlockCardModal(true);
   };
   
-  // Handle delete card
+
   const handleDeleteCard = (card) => {
     setSelectedCard(card);
     setShowDeleteCardModal(true);
   };
   
-  // Confirm block card
+
   const confirmBlockCard = () => {
     // In a real app, this would send data to an API
     customAlert(`Card ${selectedCard.cardNumber} has been blocked successfully!`);
@@ -286,7 +286,7 @@ const Cards = () => {
     // For this demo, we're just showing the alert
   };
   
-  // Confirm delete card
+
   const confirmDeleteCard = () => {
     // In a real app, this would send data to an API
     customAlert(`Card ${selectedCard.cardNumber} has been deleted successfully!`);
@@ -295,7 +295,7 @@ const Cards = () => {
     // For this demo, we're just showing the alert
   };
   
-  // Filter cards based on search term and filters
+
   const filteredCards = cardListData.filter(card => {
     return (
       (searchTerm === '' || 
@@ -529,10 +529,22 @@ const Cards = () => {
                   Card Number
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Cardholder Name
+                  Masked Number
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Proxy Number
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  First Name
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Name
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Card Type
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Issuance Type
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Issue Date
@@ -544,6 +556,18 @@ const Cards = () => {
                   Status
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Activation Status
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Customer Hash ID
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Client ID
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Card Hash ID
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -552,8 +576,12 @@ const Cards = () => {
               {cardListData.map((card) => (
                 <tr key={card.id} className="hover:bg-gray-50 transition duration-150 ease-in-out">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{card.cardNumber}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.cardholderName}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.maskedNumber}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.proxyNumber}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.firstName}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.lastName}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.cardType}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.issuanceType}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.issueDate}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.expiryDate}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
@@ -567,6 +595,17 @@ const Cards = () => {
                       {card.status}
                     </span>
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      card.activationStatus === 'Activated' ? 'bg-green-100 text-green-800' : 
+                      'bg-yellow-100 text-yellow-800'
+                    }`}>
+                      {card.activationStatus}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.customerHashId}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.clientId}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.cardHashId}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <div className="flex space-x-2">
                       <button 
