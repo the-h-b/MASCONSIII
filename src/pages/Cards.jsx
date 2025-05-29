@@ -214,6 +214,186 @@ const Cards = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 8;
   
+  const [cards, setCards] = useState([
+    {
+      id: '1',
+      activationStatus: 'INACTIVE',
+      proxyNumber: 'P1178100137471',
+      maskedNumber: '********3041',
+      cardType: 'NA',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: 'Not Assigned',
+      clientId: '363',
+      cardHash: '42cd57ed-6f77-4e63-8657-805dc060ce56',
+      firstName: '',
+      lastName: '',
+      action: 'Actions :',
+    },
+    {
+      id: '2',
+      activationStatus: 'INACTIVE',
+      proxyNumber: 'P5148100137471',
+      maskedNumber: '********3033',
+      cardType: 'NA',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: 'Not Assigned',
+      clientId: '363',
+      cardHash: '562698ea-3d5a-4318-9821-12c809f4dc6b',
+      firstName: '',
+      lastName: '',
+      action: 'Actions :',
+    },
+    {
+      id: '3',
+      activationStatus: 'ACTIVE',
+      proxyNumber: 'P0786331227471',
+      maskedNumber: '********3025',
+      cardType: 'NA',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: '23b966dc-8e5d-41e9-bd08-3642e3bdcfac',
+      clientId: '363',
+      cardHash: 'e0f6bb9c-ffae-4c0c-a47b-8e45ad387d09',
+      firstName: 'Cust001 authc002',
+      lastName: 'cust001aithc002p002gpr',
+      action: 'Actions :',
+    },
+    {
+      id: '4',
+      activationStatus: 'ACTIVE',
+      proxyNumber: 'P6456331227471',
+      maskedNumber: '********3017',
+      cardType: 'NA',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: '23b966dc-8e5d-41e9-bd08-3642e3bdcfac',
+      clientId: '363',
+      cardHash: '5b3d3ad2-7e80-4e9c-b0af-609ed6cbce6a',
+      firstName: 'Cust001 authc002',
+      lastName: 'cust001aithc002p002gpr',
+      action: 'Actions :',
+    },
+    {
+      id: '5',
+      activationStatus: 'ACTIVE',
+      proxyNumber: 'P9119728385471',
+      maskedNumber: '********0019',
+      cardType: 'GC PHYSICAL',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: '23b966dc-8e5d-41e9-bd08-3642e3bdcfac',
+      clientId: '363',
+      cardHash: 'f99079bf-1165-482f-8ed2-325be6689a0d',
+      firstName: 'Cust001 authc002',
+      lastName: 'cust001aithc002p002gpr',
+      action: 'Actions :',
+    },
+    {
+      id: '6',
+      activationStatus: 'ACTIVE',
+      proxyNumber: 'P8639728385471',
+      maskedNumber: '********0027',
+      cardType: 'GC PHYSICAL',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: '23b966dc-8e5d-41e9-bd08-3642e3bdcfac',
+      clientId: '363',
+      cardHash: '4e9c7525-fc5d-4e8d-a173-f4fa8f9e3d6c',
+      firstName: 'Cust001 authc002',
+      lastName: 'cust001aithc002p002gpr',
+      action: 'Actions :',
+    },
+    {
+      id: '7',
+      activationStatus: 'INACTIVE',
+      proxyNumber: 'P7864197385471',
+      maskedNumber: '********0001',
+      cardType: 'GC PHYSICAL',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: 'Not Assigned',
+      clientId: '363',
+      cardHash: '6f6c282e-10ff-4bea-8bb2-1b0ce3638b7b',
+      firstName: '',
+      lastName: '',
+      action: 'Actions :',
+    },
+    {
+      id: '8',
+      activationStatus: 'ACTIVE',
+      proxyNumber: 'P1234567890123',
+      maskedNumber: '********1234',
+      cardType: 'VIRTUAL',
+      issuanceType: 'SECONDARY CARD',
+      customerHashId: '7d21914a-bfa4-47fa-9a6f-d1b24a8705d6',
+      clientId: '362',
+      cardHash: 'd8ce578f-1b2c-4c5e-80e8-ca682b003a65',
+      firstName: 'Auth cust001',
+      lastName: 'Auth cust001 p001GFT',
+      action: 'Actions :',
+    },
+    {
+      id: '9',
+      activationStatus: 'INACTIVE',
+      proxyNumber: 'P9876543210987',
+      maskedNumber: '********5678',
+      cardType: 'PHYSICAL',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: 'Not Assigned',
+      clientId: '363',
+      cardHash: 'a1b2c3d4-e5f6-7890-1234-567890abcdef',
+      firstName: '',
+      lastName: '',
+      action: 'Actions :',
+    },
+    {
+      id: '10',
+      activationStatus: 'ACTIVE',
+      proxyNumber: 'P1122334455667',
+      maskedNumber: '********9012',
+      cardType: 'VIRTUAL',
+      issuanceType: 'PRIMARY CARD',
+      customerHashId: 'abcde123-4567-8901-fede-dcba98765432',
+      clientId: '364',
+      cardHash: 'fedcba98-7654-3210-9876-543210abcdef',
+      firstName: '',
+      lastName: '',
+      action: 'Actions :',
+    },
+  ]);
+
+  // State for filter values
+  const [filters, setFilters] = useState({
+    activationStatus: '',
+    proxyNumber: '',
+    maskedNumber: '',
+    cardType: '',
+    issuanceType: '',
+    customerHashId: '',
+    clientId: '',
+    cardHash: '',
+    firstName: '',
+    lastName: '',
+    action: '',
+  });
+
+  // Handle filter input changes
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  // Filter the cards based on the current filter values
+  const filteredCards = cards.filter((card) => {
+    return Object.keys(filters).every((key) => {
+      if (!filters[key]) return true; // If filter is empty, don't filter by this key
+      return String(card[key]).toLowerCase().includes(filters[key].toLowerCase());
+    });
+  });
+  
+  // Pagination calculations
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
+  const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
 
   const [newCard, setNewCard] = useState({
     cardholderName: '',
@@ -295,32 +475,15 @@ const Cards = () => {
     // For this demo, we're just showing the alert
   };
   
-
-  const filteredCards = cardListData.filter(card => {
-    return (
-      (searchTerm === '' || 
-        card.cardNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        card.cardholderName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        card.proxyNumber.toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (cardTypeFilter === '' || card.cardType === cardTypeFilter) &&
-      (statusFilter === '' || card.status === statusFilter)
-    );
-  });
-  
-  // Pagination logic
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
-  const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
+  // This function is no longer needed as we're using the filters state for filtering
   
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <AdminLayout title="Cards Management">
-      <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
-        <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold text-gray-900">Cards Management</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-900">Cards Management</h2>
         <div className="flex space-x-3">
           <button 
             onClick={() => customAlert('Assign Card functionality would be implemented here')}
@@ -338,9 +501,9 @@ const Cards = () => {
       </div>
 
       {/* Card Statistics Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         {/* Total Cards Card */}
-        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+        <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
           <div>
             <p className="text-gray-500 text-sm">Total Cards</p>
             <p className="text-2xl font-bold text-gray-900">12,500</p>
@@ -353,7 +516,7 @@ const Cards = () => {
         </div>
 
         {/* Active Cards Card */}
-        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+        <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
           <div>
             <p className="text-gray-500 text-sm">Active Cards</p>
             <p className="text-2xl font-bold text-gray-900">8,125</p>
@@ -366,7 +529,7 @@ const Cards = () => {
         </div>
 
         {/* Cards Issued This Month Card */}
-        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+        <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
           <div>
             <p className="text-gray-500 text-sm">Cards Issued (Month)</p>
             <p className="text-2xl font-bold text-gray-900">1,250</p>
@@ -379,7 +542,7 @@ const Cards = () => {
         </div>
 
         {/* Transaction Volume Card */}
-        <div className="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+        <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
           <div>
             <p className="text-gray-500 text-sm">Transaction Volume</p>
             <p className="text-2xl font-bold text-gray-900">₹6.25M</p>
@@ -393,188 +556,328 @@ const Cards = () => {
         </div>
       </div>
       
-      {/* Card List Table */}
-      <div className="bg-white rounded-lg shadow p-4 w-full">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3">
-          <h3 className="text-lg font-semibold text-gray-900">Card List</h3>
-          <div className="flex flex-wrap gap-2">
-            <input 
-              type="text" 
-              placeholder="Search cards..." 
-              className="px-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 w-full md:w-auto"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <select 
-              className="px-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 w-full md:w-auto"
-              value={cardTypeFilter}
-              onChange={(e) => setCardTypeFilter(e.target.value)}
-            >
-              <option value="">All Card Types</option>
-              <option value="Debit">Debit</option>
-              <option value="Credit">Credit</option>
-              <option value="Prepaid">Prepaid</option>
-            </select>
-            <select 
-              className="px-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 w-full md:w-auto"
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-            >
-              <option value="">All Statuses</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-              <option value="Blocked">Blocked</option>
-              <option value="Expired">Expired</option>
-              <option value="Pending">Pending</option>
-            </select>
-          </div>
-        </div>
-        {/* Table container with horizontal scroll */}
-        <div className="border border-gray-200 rounded-lg w-full" style={{ maxHeight: 'calc(100vh - 300px)', overflow: 'hidden' }}>
-          <div className="overflow-x-auto overflow-y-auto w-full" style={{ maxHeight: 'inherit' }}>
-            <table className="min-w-full divide-y divide-gray-200 w-full">
-              <thead className="bg-gray-50 sticky top-0 z-10">
-              <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Card Number
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Masked Number
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Proxy Number
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  First Name
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Last Name
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Card Type
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Issuance Type
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Issue Date
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Expiry Date
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Activation Status
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Customer Hash ID
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Client ID
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Card Hash ID
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {cardListData.map((card) => (
-                <tr key={card.id} className="hover:bg-gray-50 transition duration-150 ease-in-out">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{card.cardNumber}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.maskedNumber}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.proxyNumber}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.firstName}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.lastName}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.cardType}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.issuanceType}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.issueDate}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.expiryDate}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      card.status === 'Active' ? 'bg-green-100 text-green-800' : 
-                      card.status === 'Inactive' ? 'bg-gray-100 text-gray-800' : 
-                      card.status === 'Blocked' ? 'bg-red-100 text-red-800' : 
-                      card.status === 'Expired' ? 'bg-yellow-100 text-yellow-800' : 
-                      'bg-blue-100 text-blue-800'
-                    }`}>
-                      {card.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      card.activationStatus === 'Activated' ? 'bg-green-100 text-green-800' : 
-                      'bg-yellow-100 text-yellow-800'
-                    }`}>
-                      {card.activationStatus}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.customerHashId}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.clientId}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.cardHashId}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <div className="flex space-x-2">
-                      <button 
-                        onClick={() => handleViewCard(card)} 
-                        className="text-blue-600 hover:text-blue-900 text-xs font-medium"
-                      >
-                        View
-                      </button>
-                      <button 
-                        onClick={() => handleBlockCard(card)} 
-                        className="text-blue-600 hover:text-blue-900 text-xs font-medium"
-                      >
-                        Block
-                      </button>
-                      <button 
-                        onClick={() => handleDeleteCard(card)} 
-                        className="text-red-600 hover:text-red-900 text-xs font-medium"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
-        </div>
-
-        {/* Pagination */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-600">
-          <span className="mb-2 sm:mb-0">Showing {indexOfFirstCard + 1}-{Math.min(indexOfLastCard, filteredCards.length)} of {filteredCards.length} entries</span>
-          <div className="flex space-x-1">
-            <button 
-              onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-              className={`px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
-            >
-              {'<'}
-            </button>
-            {Array.from({ length: Math.min(5, totalPages) }).map((_, i) => {
-              const pageNum = i + 1;
-              return (
-                <button
-                  key={pageNum}
-                  onClick={() => paginate(pageNum)}
-                  className={`px-2 py-1 rounded transition duration-200 ease-in-out ${pageNum === currentPage ? 'bg-blue-600 text-white shadow-md' : 'border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white'}`}
+      {/* Card Analytics Section */}
+      <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">Card Analytics</h3>
+        <p className="text-gray-700 mb-6">
+          View detailed analytics about card issuance, usage, and distribution across different categories.
+        </p>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Card Issuance Chart */}
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 className="text-lg font-medium text-gray-900 mb-4">Card Issuance Trends</h4>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={cardIssuanceData}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                 >
-                  {pageNum}
-                </button>
-              );
-            })}
-            <button 
-              onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className={`px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
-            >
-              {'>'}
-            </button>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="physical" fill="#8884d8" name="Physical Cards" />
+                  <Bar dataKey="virtual" fill="#82ca9d" name="Virtual Cards" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          
+          {/* Card Status Distribution */}
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 className="text-lg font-medium text-gray-900 mb-4">Card Status Distribution</h4>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={cardStatusData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                  >
+                    {cardStatusData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          
+          {/* Card Type Distribution */}
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 className="text-lg font-medium text-gray-900 mb-4">Card Type Distribution</h4>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={cardTypeData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                  >
+                    {cardTypeData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          
+          {/* Card Usage Trends */}
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
+            <h4 className="text-lg font-medium text-gray-900 mb-4">Card Usage Trends</h4>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart
+                  data={cardUsageData}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis yAxisId="left" />
+                  <YAxis yAxisId="right" orientation="right" />
+                  <Tooltip />
+                  <Legend />
+                  <Bar yAxisId="left" dataKey="transactions" fill="#8884d8" name="Transactions" />
+                  <Line yAxisId="right" type="monotone" dataKey="volume" stroke="#ff7300" name="Volume (₹)" />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Cards List Table */}
+      <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">Cards List</h3>
+        <p className="text-gray-700 mb-6">
+          View and manage all cards in the system. Use the filters below to find specific cards.
+        </p>
+
+        {/* Table Container */}
+        <div className="w-full bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+          {/* Scrollable area for the table */}
+          <div className="overflow-x-auto overflow-y-auto max-h-[60vh] rounded-lg">
+            <table className="min-w-full divide-y divide-gray-200">
+              {/* Table Header */}
+              <thead className="bg-gray-50 sticky top-0 z-10">
+                <tr>
+                  {/* Table Headers with Filters */}
+                  {[
+                    { name: 'activationStatus', label: 'ACTIVATION STATUS' },
+                    { name: 'proxyNumber', label: 'PROXY NUMBER' },
+                    { name: 'maskedNumber', label: 'MASKED NUMBER' },
+                    { name: 'cardType', label: 'CARD TYPE' },
+                    { name: 'issuanceType', label: 'ISSUANCE TYPE' },
+                    { name: 'customerHashId', label: 'CUSTOMER HASH ID' },
+                    { name: 'clientId', label: 'CLIENT ID' },
+                    { name: 'cardHash', label: 'CARD HASH' },
+                    { name: 'firstName', label: 'FIRST NAME' },
+                    { name: 'lastName', label: 'LAST NAME' },
+                    { name: 'action', label: 'ACTION' },
+                  ].map((header) => (
+                    <th
+                      key={header.name}
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    >
+                      <div className="flex flex-col">
+                        <span>{header.label}</span>
+                        {/* Filter input fields */}
+                        {header.name === 'activationStatus' ? (
+                          <select
+                            name={header.name}
+                            value={filters[header.name]}
+                            onChange={handleFilterChange}
+                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
+                          >
+                            <option value="">Please Select Status</option>
+                            <option value="ACTIVE">ACTIVE</option>
+                            <option value="INACTIVE">INACTIVE</option>
+                          </select>
+                        ) : header.name === 'cardType' ? (
+                          <select
+                            name={header.name}
+                            value={filters[header.name]}
+                            onChange={handleFilterChange}
+                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
+                          >
+                            <option value="">Please Select Card Type</option>
+                            <option value="NA">NA</option>
+                            <option value="GC PHYSICAL">GC PHYSICAL</option>
+                            <option value="VIRTUAL">VIRTUAL</option>
+                            <option value="PHYSICAL">PHYSICAL</option>
+                          </select>
+                        ) : (
+                          <input
+                            type="text"
+                            name={header.name}
+                            value={filters[header.name]}
+                            onChange={handleFilterChange}
+                            placeholder={`Search ${header.label.toLowerCase()}`}
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                          />
+                        )}
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              {/* Table Body */}
+              <tbody className="bg-white divide-y divide-gray-200">
+                {currentCards.length > 0 ? (
+                  currentCards.map((card) => (
+                    <tr key={card.id} className="hover:bg-gray-50">
+                      {/* Activation Status Cell with colored indicator */}
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <span
+                            className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold leading-tight ${
+                              card.activationStatus === 'ACTIVE'
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-yellow-100 text-yellow-800'
+                            }`}
+                          >
+                            {card.activationStatus}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.proxyNumber}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.maskedNumber}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.cardType}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.issuanceType}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.customerHashId}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.clientId}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.cardHash}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.firstName}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.lastName}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <div className="flex space-x-2">
+                          <button 
+                            onClick={() => handleViewCard(card)} 
+                            className="text-blue-600 hover:text-blue-900 text-xs font-medium"
+                          >
+                            View
+                          </button>
+                          <button 
+                            onClick={() => {
+                              setSelectedCard(card);
+                              customAlert('Edit functionality would be implemented here');
+                            }} 
+                            className="text-blue-600 hover:text-blue-900 text-xs font-medium"
+                          >
+                            Edit
+                          </button>
+                          <button 
+                            onClick={() => handleDeleteCard(card)} 
+                            className="text-red-600 hover:text-red-900 text-xs font-medium"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="11" className="px-6 py-4 text-center text-gray-500">
+                      No cards found matching the current filters.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          
+          {/* Pagination */}
+          <div className="bg-gray-50 px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+            <div className="flex-1 flex justify-between sm:hidden">
+              <button
+                onClick={() => currentPage > 1 && paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 ${
+                  currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                Previous
+              </button>
+              <button
+                onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 ${
+                  currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                Next
+              </button>
+            </div>
+            <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm text-gray-700">
+                  Showing <span className="font-medium">{indexOfFirstCard + 1}</span> to{' '}
+                  <span className="font-medium">
+                    {Math.min(indexOfLastCard, filteredCards.length)}
+                  </span>{' '}
+                  of <span className="font-medium">{filteredCards.length}</span> results
+                </p>
+              </div>
+              <div>
+                <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                  <button
+                    onClick={() => currentPage > 1 && paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 ${
+                      currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    <span className="sr-only">Previous</span>
+                    &laquo;
+                  </button>
+                  {Array.from({ length: Math.min(5, totalPages) }).map((_, i) => {
+                    const pageNum = i + 1;
+                    return (
+                      <button
+                        key={pageNum}
+                        onClick={() => paginate(pageNum)}
+                        className={`relative inline-flex items-center px-4 py-2 border ${
+                          pageNum === currentPage
+                            ? 'z-10 bg-blue-50 border-blue-500 text-blue-600'
+                            : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
+                        } text-sm font-medium`}
+                      >
+                        {pageNum}
+                      </button>
+                    );
+                  })}
+                  <button
+                    onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 ${
+                      currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    <span className="sr-only">Next</span>
+                    &raquo;
+                  </button>
+                </nav>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -877,7 +1180,6 @@ const Cards = () => {
           </div>
         </div>
       )}
-      </div>
     </AdminLayout>
   );
 };
