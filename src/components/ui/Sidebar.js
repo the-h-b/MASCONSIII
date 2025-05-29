@@ -62,7 +62,7 @@ const Sidebar = () => {
           </div>
 
           {/* Step 4 */}
-          <div className={`flex items-center ${!isStep4Active && 'opacity-70'}`}>
+          {/* <div className={`flex items-center ${!isStep4Active && 'opacity-70'}`}>
             <div className={`w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
               ${isStep4Active 
                 ? 'bg-white text-blue-700' 
@@ -72,7 +72,7 @@ const Sidebar = () => {
             <span className={`ml-4 text-white text-base ${isStep4Active && 'font-semibold'}`}>
               E-Sign
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
 
