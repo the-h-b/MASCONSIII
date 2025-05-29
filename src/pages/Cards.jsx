@@ -382,18 +382,12 @@ const Cards = () => {
   };
 
   // Filter the cards based on the current filter values
-  const filteredCards = cards.filter((card) => {
+  const filteredTableCards = cards.filter((card) => {
     return Object.keys(filters).every((key) => {
       if (!filters[key]) return true; // If filter is empty, don't filter by this key
       return String(card[key]).toLowerCase().includes(filters[key].toLowerCase());
     });
   });
-  
-  // Pagination calculations
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
-  const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
 
   const [newCard, setNewCard] = useState({
     cardholderName: '',
@@ -475,7 +469,23 @@ const Cards = () => {
     // For this demo, we're just showing the alert
   };
   
-  // This function is no longer needed as we're using the filters state for filtering
+
+  const filteredCards = cardListData.filter(card => {
+    return (
+      (searchTerm === '' || 
+        card.cardNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        card.cardholderName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        card.proxyNumber.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      (cardTypeFilter === '' || card.cardType === cardTypeFilter) &&
+      (statusFilter === '' || card.status === statusFilter)
+    );
+  });
+  
+  // Pagination logic
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
+  const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
   
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -664,16 +674,14 @@ const Cards = () => {
       </div>
       
       {/* Cards List Table */}
-      <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">Cards List</h3>
-        <p className="text-gray-700 mb-6">
-          View and manage all cards in the system. Use the filters below to find specific cards.
-        </p>
+      <div className="min-h-screen bg-gray-100 p-4 font-sans flex flex-col items-center">
+        {/* Page Title */}
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 mt-4">Cards List</h1>
 
         {/* Table Container */}
-        <div className="w-full bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+        <div className="w-full max-w-7xl bg-white rounded-lg shadow-xl overflow-hidden">
           {/* Scrollable area for the table */}
-          <div className="overflow-x-auto overflow-y-auto max-h-[60vh] rounded-lg">
+          <div className="overflow-x-auto overflow-y-auto max-h-[80vh] rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
               {/* Table Header */}
               <thead className="bg-gray-50 sticky top-0 z-10">
@@ -687,7 +695,7 @@ const Cards = () => {
                     { name: 'issuanceType', label: 'ISSUANCE TYPE' },
                     { name: 'customerHashId', label: 'CUSTOMER HASH ID' },
                     { name: 'clientId', label: 'CLIENT ID' },
-                    { name: 'cardHash', label: 'CARD HASH' },
+                    { name: 'cardHash', label: 'CARD HAS' },
                     { name: 'firstName', label: 'FIRST NAME' },
                     { name: 'lastName', label: 'LAST NAME' },
                     { name: 'action', label: 'ACTION' },
@@ -741,8 +749,8 @@ const Cards = () => {
               </thead>
               {/* Table Body */}
               <tbody className="bg-white divide-y divide-gray-200">
-                {currentCards.length > 0 ? (
-                  currentCards.map((card) => (
+                {filteredCards.length > 0 ? (
+                  filteredCards.map((card) => (
                     <tr key={card.id} className="hover:bg-gray-50">
                       {/* Activation Status Cell with colored indicator */}
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -769,27 +777,9 @@ const Cards = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{card.lastName}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <div className="flex space-x-2">
-                          <button 
-                            onClick={() => handleViewCard(card)} 
-                            className="text-blue-600 hover:text-blue-900 text-xs font-medium"
-                          >
-                            View
-                          </button>
-                          <button 
-                            onClick={() => {
-                              setSelectedCard(card);
-                              customAlert('Edit functionality would be implemented here');
-                            }} 
-                            className="text-blue-600 hover:text-blue-900 text-xs font-medium"
-                          >
-                            Edit
-                          </button>
-                          <button 
-                            onClick={() => handleDeleteCard(card)} 
-                            className="text-red-600 hover:text-red-900 text-xs font-medium"
-                          >
-                            Delete
-                          </button>
+                          <button className="text-blue-600 hover:text-blue-900 text-xs font-medium">View</button>
+                          <button className="text-blue-600 hover:text-blue-900 text-xs font-medium">Edit</button>
+                          <button className="text-red-600 hover:text-red-900 text-xs font-medium">Delete</button>
                         </div>
                       </td>
                     </tr>
@@ -803,81 +793,6 @@ const Cards = () => {
                 )}
               </tbody>
             </table>
-          </div>
-          
-          {/* Pagination */}
-          <div className="bg-gray-50 px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
-            <div className="flex-1 flex justify-between sm:hidden">
-              <button
-                onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 ${
-                  currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              >
-                Previous
-              </button>
-              <button
-                onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={`ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 ${
-                  currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              >
-                Next
-              </button>
-            </div>
-            <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm text-gray-700">
-                  Showing <span className="font-medium">{indexOfFirstCard + 1}</span> to{' '}
-                  <span className="font-medium">
-                    {Math.min(indexOfLastCard, filteredCards.length)}
-                  </span>{' '}
-                  of <span className="font-medium">{filteredCards.length}</span> results
-                </p>
-              </div>
-              <div>
-                <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                  <button
-                    onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-                    disabled={currentPage === 1}
-                    className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 ${
-                      currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
-                  >
-                    <span className="sr-only">Previous</span>
-                    &laquo;
-                  </button>
-                  {Array.from({ length: Math.min(5, totalPages) }).map((_, i) => {
-                    const pageNum = i + 1;
-                    return (
-                      <button
-                        key={pageNum}
-                        onClick={() => paginate(pageNum)}
-                        className={`relative inline-flex items-center px-4 py-2 border ${
-                          pageNum === currentPage
-                            ? 'z-10 bg-blue-50 border-blue-500 text-blue-600'
-                            : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
-                        } text-sm font-medium`}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
-                  <button
-                    onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                    className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 ${
-                      currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
-                  >
-                    <span className="sr-only">Next</span>
-                    &raquo;
-                  </button>
-                </nav>
-              </div>
-            </div>
           </div>
         </div>
       </div>
