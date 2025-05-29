@@ -45,7 +45,7 @@ const BasicDetails = () => {
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Basic Details</h1>
             <p className="text-gray-600 text-lg">Let's start with entering a few basic details about your business.</p>
           </div>
-          <button 
+          {/* <button 
             onClick={goToSignIn} 
             className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 flex items-center"
           >
@@ -53,7 +53,7 @@ const BasicDetails = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
             Sign Out
-          </button>
+          </button> */}
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

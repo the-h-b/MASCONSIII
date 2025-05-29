@@ -192,21 +192,10 @@ const EntityDetail1 = () => {
                 2
               </div>
               <span className="ml-4 text-white text-base font-semibold">
-                Entity Details (1/2)
+                Entity Details 
               </span>
             </div>
 
-            {/* Step 3 */}
-            <div className="flex items-center opacity-70">
-              <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
-                border-2 border-white text-white">
-                3
-              </div>
-              <span className="ml-4 text-white text-base">
-                Entity Details (2/2)
-              </span>
-            </div>
-            
             {/* Step 4 */}
             <div className="flex items-center opacity-70">
               <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
@@ -218,7 +207,7 @@ const EntityDetail1 = () => {
               </span>
             </div>
             
-            {/* Step 5 */}
+            {/* Step 5
             <div className="flex items-center opacity-70">
               <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
                 border-2 border-white text-white">
@@ -227,7 +216,7 @@ const EntityDetail1 = () => {
               <span className="ml-4 text-white text-base">
                 E-Sign
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
 

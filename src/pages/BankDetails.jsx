@@ -27,7 +27,7 @@ const BankDetails = () => {
           >
             &lt; Back
           </button>
-          <button 
+          {/* <button 
             className="text-blue-600 text-sm flex items-center"
             onClick={goToDashboard}
           >
@@ -35,7 +35,7 @@ const BankDetails = () => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </button>
+          </button> */}
         </div>
         <h2 className="text-2xl font-semibold mb-1">Bank Details</h2>
         <p className="text-sm text-gray-500 mb-6">Please Enter Your Bank Details</p>
@@ -196,16 +196,16 @@ const BankDetails = () => {
         <div className="flex items-center space-x-4">
           <button 
             onClick={goToDashboard}
-            className="border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm px-4 py-2 rounded"
-          >
-            Go to Dashboard
-          </button>
-          <button 
-            onClick={handleNext}
             className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded"
           >
             Next
           </button>
+          {/* <button 
+            onClick={handleNext}
+            className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded"
+          >
+            
+          </button> */}
           <span className="text-gray-400 text-sm">or</span>
           <span className="text-blue-500 text-sm">Press enter</span>
         </div>
@@ -241,18 +241,7 @@ const BankDetails = () => {
                 2
               </div>
               <span className="ml-4 text-white text-base font-semibold">
-                Entity Details (1/2)
-              </span>
-            </div>
-
-            {/* Step 3 - Completed */}
-            <div className="flex items-center">
-              <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
-                bg-white text-blue-700">
-                3
-              </div>
-              <span className="ml-4 text-white text-base font-semibold">
-                Entity Details (2/2)
+                Entity Details
               </span>
             </div>
             
@@ -260,21 +249,10 @@ const BankDetails = () => {
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
                 bg-white text-blue-700">
-                4
+                3
               </div>
               <span className="ml-4 text-white text-base font-semibold">
                 Bank Details
-              </span>
-            </div>
-
-            {/* Step 5 */}
-            <div className="flex items-center opacity-70">
-              <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
-                border-2 border-white text-white">
-                5
-              </div>
-              <span className="ml-4 text-white text-base">
-                E-Sign
               </span>
             </div>
           </div>
