@@ -13,9 +13,10 @@ import Dashboard from './pages/Dashboard.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 import Invoice from './pages/Invoice.jsx';
 import FinancingMain from './pages/FinancingMain.jsx';
+import PaymentMethods from './pages/PaymentMethods.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
-// Import new admin pages
+// admin pages
 import MasterBIN from './pages/MasterBIN.jsx';
 import MasterClients from './pages/MasterClients.jsx';
 import BINSetup from './pages/BINSetup.jsx';
@@ -91,6 +92,11 @@ const App = () => {
         <Route path="/financing" element={
           <ProtectedRoute requiredRole="user">
             <FinancingMain />
+          </ProtectedRoute>
+        } />
+        <Route path="/payment-methods" element={
+          <ProtectedRoute requiredRole="user">
+            <PaymentMethods />
           </ProtectedRoute>
         } />
         
