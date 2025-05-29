@@ -1,7 +1,6 @@
 .invoice-page {
   background-color: #f9fafb;
   min-height: 100vh;
-  padding: 2rem;
   font-family: 'Inter', sans-serif;
 }
 
@@ -10,6 +9,7 @@
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin: 2rem;
 }
 
 h2 {
@@ -114,4 +114,20 @@ h2 {
   font-size: 18px;
   font-weight: 600;
   color: #111827;
+}
+
+/* Navigation styling */
+nav a {
+  text-decoration: none;
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+nav a.active, 
+nav a.text-blue-600 {
+  color: #2563eb;
 }

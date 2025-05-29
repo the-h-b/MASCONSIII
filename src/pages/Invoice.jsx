@@ -72,12 +72,12 @@ const Invoice = () => {
         </div>
 
         <nav className="flex items-center space-x-8 text-sm font-medium text-gray-700">
-          <button onClick={goToDashboard} className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Dashboard</button>
-          <button className="bg-transparent border-none text-blue-600 cursor-pointer font-medium">Invoices</button>
-          <button onClick={goToFinancing} className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Financing</button>
-          <button className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Analytics</button>
-          <button onClick={goToBankDetails} className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Bank Details</button>
-          <button className="bg-transparent border-none text-gray-700 cursor-pointer hover:text-blue-600">Settings</button>
+          <a href="#" onClick={(e) => { e.preventDefault(); goToDashboard(); }}>Dashboard</a>
+          <a href="#" className="text-blue-600">Invoices</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); goToFinancing(); }}>Financing</a>
+          <a href="#">Analytics</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); goToBankDetails(); }}>Bank Details</a>
+          <a href="#">Settings</a>
           <div className="flex items-center space-x-2 bg-gray-100 px-3 py-1 rounded-full">
             <span>HARSH BHUTRA</span>
             <span className="bg-purple-500 text-white text-xs px-2 py-0.5 rounded-full">Pro</span>
