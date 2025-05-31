@@ -17,10 +17,10 @@ import PaymentMethods from './pages/PaymentMethods.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 // admin pages
-import MasterBIN from './pages/MasterBIN.jsx';
-import MasterClients from './pages/MasterClients.jsx';
-import BINSetup from './pages/BINSetup.jsx';
-import EmbosserLogo from './pages/EmbosserLogo.jsx';
+// import MasterBIN from './pages/MasterBIN.jsx';
+// import MasterClients from './pages/MasterClients.jsx';
+// import BINSetup from './pages/BINSetup.jsx';
+// import EmbosserLogo from './pages/EmbosserLogo.jsx';
 import Program from './pages/Program.jsx';
 import Clients from './pages/Clients.jsx';
 import ClientPrefund from './pages/ClientPrefund.jsx';
@@ -113,7 +113,7 @@ const App = () => {
             <AdminDashboard />
           </ProtectedRoute>
         } />
-        <Route path="/master-bin" element={
+        {/* <Route path="/master-bin" element={
           <ProtectedRoute requiredRole="admin">
             <MasterBIN />
           </ProtectedRoute>
@@ -132,7 +132,7 @@ const App = () => {
           <ProtectedRoute requiredRole="admin">
             <EmbosserLogo />
           </ProtectedRoute>
-        } />
+        } /> */}
         <Route path="/program" element={
           <ProtectedRoute requiredRole="admin">
             <Program />
