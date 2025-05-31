@@ -28,48 +28,13 @@ const AdminSidebar = () => {
               Dashboard
             </Link>
           </li>
-          <li className="mb-2">
-            <Link 
-              to="/master-bin" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/master-bin' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
-            >
-              {/* Master BIN Icon SVG */}
-              <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              Master BIN
-            </Link>
-          </li>
-          <li className="mb-2">
-            <Link 
-              to="/master-clients" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/master-clients' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
-            >
-              {/* Master Clients Icon SVG */}
-              <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-              </svg>
-              Master Clients
-            </Link>
-          </li>
-          <li className="mb-2">
-            <Link 
-              to="/bin-setup" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/bin-setup' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
-            >
-              {/* BIN Setup Icon SVG */}
-              <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM13 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2zM13 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2z" />
-              </svg>
-              BIN Setup
-            </Link>
-          </li>
+
           
           {/* Step 1: Program Management */}
           <li className="mb-2">
             <Link 
               to="/programs" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/programs' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/programs' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Program Management Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +48,7 @@ const AdminSidebar = () => {
           <li className="mb-2">
             <Link 
               to="/anchors" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/anchors' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/anchors' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Anchor Management Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +62,7 @@ const AdminSidebar = () => {
           <li className="mb-2">
             <Link 
               to="/lenders" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/lenders' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/lenders' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Lender Management Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +76,7 @@ const AdminSidebar = () => {
           <li className="mb-2">
             <Link 
               to="/financing-clients" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/financing-clients' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/financing-clients' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Client Management Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +90,7 @@ const AdminSidebar = () => {
           <li className="mb-2">
             <Link 
               to="/admin-tools" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/admin-tools' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/admin-tools' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Admin Controls Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +102,7 @@ const AdminSidebar = () => {
           
           {/* Original pages to keep */}
           <li className="mt-6 mb-2">
-            <div className="px-3 text-xs uppercase font-semibold text-blue-300">
+            <div className="px-3 text-xs uppercase font-semibold text-white">
               Card Management
             </div>
           </li>
@@ -145,7 +110,7 @@ const AdminSidebar = () => {
           <li className="mb-2">
             <Link 
               to="/cards" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/cards' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/cards' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Cards Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +122,7 @@ const AdminSidebar = () => {
           
           {/* Other system features */}
           <li className="mt-6 mb-2">
-            <div className="px-3 text-xs uppercase font-semibold text-blue-300">
+            <div className="px-3 text-xs uppercase font-semibold text-white">
               System
             </div>
           </li>
@@ -165,7 +130,7 @@ const AdminSidebar = () => {
           <li className="mb-2">
             <Link 
               to="/settings" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/settings' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/settings' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Settings Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +143,7 @@ const AdminSidebar = () => {
           <li className="mb-2">
             <Link 
               to="/profile" 
-              className={`flex items-center p-3 rounded-lg ${location.pathname === '/profile' ? 'bg-blue-800' : 'hover:bg-blue-800'} transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
+              className={`flex items-center p-3 rounded-lg ${location.pathname === '/profile' ? 'bg-blue-800' : 'hover:bg-blue-800'} text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md`}
             >
               {/* Profile Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -195,7 +160,7 @@ const AdminSidebar = () => {
           <li>
             <button
               onClick={handleSignOut}
-              className="flex items-center p-3 rounded-lg hover:bg-blue-800 w-full text-left transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md"
+              className="flex items-center p-3 rounded-lg hover:bg-blue-800 w-full text-left text-white transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-md"
             >
               {/* Logout Icon SVG */}
               <svg className="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
