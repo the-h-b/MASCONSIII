@@ -32,6 +32,13 @@ import BulkUploads from './pages/BulkUploads.jsx';
 import Profile from './pages/Profile.jsx';
 import Settings from './pages/Settings.jsx';
 
+// Supply Chain Financing Platform pages
+import ProgramManagement from './pages/ProgramManagement.jsx';
+import AnchorManagement from './pages/AnchorManagement.jsx';
+import LenderManagement from './pages/LenderManagement.jsx';
+import ClientManagement from './pages/ClientManagement.jsx';
+import AdminControls from './pages/AdminControls.jsx';
+
 const App = () => {
   return (
     <Router>
@@ -174,6 +181,33 @@ const App = () => {
         <Route path="/settings" element={
           <ProtectedRoute requiredRole="admin">
             <Settings />
+          </ProtectedRoute>
+        } />
+        
+        {/* Supply Chain Financing Platform Routes */}
+        <Route path="/programs" element={
+          <ProtectedRoute requiredRole="admin">
+            <ProgramManagement />
+          </ProtectedRoute>
+        } />
+        <Route path="/anchors" element={
+          <ProtectedRoute requiredRole="admin">
+            <AnchorManagement />
+          </ProtectedRoute>
+        } />
+        <Route path="/lenders" element={
+          <ProtectedRoute requiredRole="admin">
+            <LenderManagement />
+          </ProtectedRoute>
+        } />
+        <Route path="/financing-clients" element={
+          <ProtectedRoute requiredRole="admin">
+            <ClientManagement />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin-tools" element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminControls />
           </ProtectedRoute>
         } />
         
