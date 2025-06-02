@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -13,17 +13,48 @@ const BasicDetails = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const navigate = useNavigate();
 
+  // Check if user is logged in
+  useEffect(() => {
+    const userRole = localStorage.getItem('userRole');
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    
+    if (!isLoggedIn) {
+      navigate('/');
+    } else if (userRole === 'admin') {
+      navigate('/admin-dashboard');
+    }
+  }, [navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', { pan, mobile, isConfirmed });
     navigate('/basic-details1');
   };
+  
+  const goToSignIn = () => {
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('isLoggedIn');
+    navigate('/');
+  };
 
   return (
     <Layout>
       <div className="w-full max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Basic Details</h1>
-        <p className="text-gray-600 mb-8 text-lg">Let's start with entering a few basic details about your business.</p>
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Basic Details</h1>
+            <p className="text-gray-600 text-lg">Let's start with entering a few basic details about your business.</p>
+          </div>
+          {/* <button 
+            onClick={goToSignIn} 
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 flex items-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Sign Out
+          </button> */}
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -51,9 +82,14 @@ const BasicDetails = () => {
               id="mobile"
               type="tel"
               value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
+              onChange={(e) => {
+                // Allow only numbers
+                const numericValue = e.target.value.replace(/\D/g, '');
+                setMobile(numericValue);
+              }}
               placeholder="888 888 8888"
               required
+              maxLength={10}
             />
             <p className="text-sm text-gray-500 mt-2">
               Please enter a valid mobile number. OTP will be shared on this number for verification.

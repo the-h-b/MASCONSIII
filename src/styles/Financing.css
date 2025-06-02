@@ -1,0 +1,62 @@
+.financing-container {
+  padding: 2rem;
+}
+
+.badges span {
+  margin-right: 1rem;
+  padding: 5px 10px;
+  background-color: #eef3f9;
+  border-radius: 15px;
+}
+
+.role-box {
+  background-color: #eaf1ff;
+  padding: 10px;
+  margin: 1rem 0;
+  border-radius: 5px;
+  color: #1e4fe4;
+}
+
+.financing-tabs {
+  display: flex;
+  gap: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.financing-tabs button {
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #444;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+}
+
+.financing-tabs button.active {
+  color: #1e4fe4;
+  border-bottom: 2px solid #1e4fe4;
+}
+
+.financing-content {
+  padding-top: 1rem;
+}
+
+.no-invoices-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.create-invoice-btn {
+  background-color: #1e4fe4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}

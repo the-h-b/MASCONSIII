@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -11,12 +11,30 @@ const BasicDetails1 = () => {
   const [udyam, setUdyam] = useState('');
   const navigate = useNavigate();
 
+  // Check if user is logged in
+  useEffect(() => {
+    const userRole = localStorage.getItem('userRole');
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    
+    if (!isLoggedIn) {
+      navigate('/');
+    } else if (userRole === 'admin') {
+      navigate('/admin-dashboard');
+    }
+  }, [navigate]);
+
   const handleNext = () => {
     if (email && udyam) {
       navigate('/gst-selection');
     } else {
       alert('Please fill all required fields.');
     }
+  };
+  
+  const handleSignOut = () => {
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('isLoggedIn');
+    navigate('/');
   };
   return (
     <Layout>
@@ -138,14 +156,22 @@ const BasicDetails1 = () => {
             </div>
           </div>
           
-          <div className="flex items-center gap-4 pt-4">
+          <div className="flex items-center justify-between gap-4 pt-4">
             <Button
               type="button"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/basic-details')}
               className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-lg text-base shadow-sm transition-colors duration-200 flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" /> Back
             </Button>
+            
+            {/* <Button
+              type="button"
+              onClick={handleSignOut}
+              className="bg-red-100 hover:bg-red-200 text-red-700 font-semibold px-6 py-2 rounded-lg text-base shadow-sm transition-colors duration-200 flex items-center gap-2"
+            >
+              Sign Out
+            </Button> */}
           </div>
         </form>
       </div>

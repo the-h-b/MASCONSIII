@@ -1,18 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SelectGST2 = () => {
   const navigate = useNavigate();
+  
+  // Check if user is logged in
+  useEffect(() => {
+    const userRole = localStorage.getItem('userRole');
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    
+    if (!isLoggedIn) {
+      navigate('/');
+    } else if (userRole === 'admin') {
+      navigate('/admin-dashboard');
+    }
+  }, [navigate]);
+  
+  const handleSignOut = () => {
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('isLoggedIn');
+    navigate('/');
+  };
   return (
     <div className="flex min-h-screen bg-gray-50">
       {}
       <div className="flex-1 p-10">
-        <button 
-          onClick={() => navigate('/gst-selection')} 
-          className="text-blue-600 text-sm mb-6 hover:text-blue-800"
-        >
-          &lt; Back
-        </button>
+        <div className="flex justify-between mb-6">
+          <button 
+            onClick={() => navigate('/gst-selection')} 
+            className="text-blue-600 text-sm hover:text-blue-800"
+          >
+            &lt; Back
+          </button>
+          {/* <button 
+            onClick={handleSignOut} 
+            className="text-red-600 text-sm hover:text-red-800"
+          >
+            Sign Out
+          </button> */}
+        </div>
         <h2 className="text-2xl font-semibold mb-2">Select GST</h2>
         <p className="text-gray-600 mb-6">Please select your primary place of Business.</p>
 
@@ -117,7 +143,7 @@ const SelectGST2 = () => {
               </span>
             </div>
             
-            {/* Step 5 */}
+            {/* Step 5
             <div className="flex items-center opacity-70">
               <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md border-2 border-white text-white">
                 5
@@ -125,7 +151,7 @@ const SelectGST2 = () => {
               <span className="ml-4 text-white text-base">
                 E-Sign
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
         

@@ -199,17 +199,6 @@ const EntityDetail2 = () => {
               </span>
             </div>
 
-            {/* Step 2 - Completed */}
-            <div className="flex items-center">
-              <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
-                bg-white text-blue-700">
-                2
-              </div>
-              <span className="ml-4 text-white text-base font-semibold">
-                Entity Details (1/2)
-              </span>
-            </div>
-
             {/* Step 3 - Current */}
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
@@ -217,7 +206,7 @@ const EntityDetail2 = () => {
                 3
               </div>
               <span className="ml-4 text-white text-base font-semibold">
-                Entity Details (2/2)
+                Entity Details 
               </span>
             </div>
             
@@ -229,17 +218,6 @@ const EntityDetail2 = () => {
               </div>
               <span className="ml-4 text-white text-base">
                 Bank Details
-              </span>
-            </div>
-
-            {/* Step 5 */}
-            <div className="flex items-center opacity-70">
-              <div className="w-8 h-8 rounded-full font-bold text-center flex items-center justify-center shadow-md
-                border-2 border-white text-white">
-                5
-              </div>
-              <span className="ml-4 text-white text-base">
-                E-Sign
               </span>
             </div>
           </div>

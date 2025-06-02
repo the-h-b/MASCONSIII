@@ -9,7 +9,7 @@ const Sidebar = () => {
   const isStep1Active = path === '/';
   const isStep2Active = path === '/entity-details';
   const isStep3Active = path === '/gst-selection' || path === '/select-gst2'; 
-  const isStep4Active = false; // E-Sign - not implemented yet
+  const isStep4Active = path === '/payment-methods'; // Payment Methods page
 
   return (
     <div className="w-72 min-h-screen bg-gradient-to-b from-[#0072ff] to-[#00c6ff] text-white flex flex-col justify-between p-8">
@@ -70,7 +70,7 @@ const Sidebar = () => {
               4
             </div>
             <span className={`ml-4 text-white text-base ${isStep4Active && 'font-semibold'}`}>
-              E-Sign
+              Payment Methods
             </span>
           </div>
         </div>

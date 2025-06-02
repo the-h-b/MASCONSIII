@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -11,6 +11,18 @@ const SelectGST = () => {
   const [exempt, setExempt] = useState(false);
   const navigate = useNavigate();
 
+  // Check if user is logged in
+  useEffect(() => {
+    const userRole = localStorage.getItem('userRole');
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    
+    if (!isLoggedIn) {
+      navigate('/');
+    } else if (userRole === 'admin') {
+      navigate('/admin-dashboard');
+    }
+  }, [navigate]);
+
   const handleSubmit = () => {
     if (exempt) {
       navigate('/select-gst2');
@@ -19,6 +31,12 @@ const SelectGST = () => {
     } else {
       alert('Please select a GST option or check exemption');
     }
+  };
+  
+  const handleSignOut = () => {
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('isLoggedIn');
+    navigate('/');
   };
 
   return (
@@ -114,7 +132,7 @@ const SelectGST = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 pt-4">
+          <div className="flex items-center justify-between gap-4 pt-4">
             <Button
               type="button"
               onClick={() => navigate('/basic-details1')}
@@ -122,6 +140,14 @@ const SelectGST = () => {
             >
               <ArrowLeft className="w-4 h-4" /> Back
             </Button>
+            
+            {/* <Button
+              type="button"
+              onClick={handleSignOut}
+              className="bg-red-100 hover:bg-red-200 text-red-700 font-semibold px-6 py-2 rounded-lg text-base shadow-sm transition-colors duration-200 flex items-center gap-2"
+            >
+              Sign Out
+            </Button> */}
           </div>
         </div>
       </div>

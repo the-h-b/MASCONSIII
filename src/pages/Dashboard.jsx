@@ -11,6 +11,14 @@ const Dashboard = () => {
   const goToInvoice = () => {
     navigate("/invoice");
   };
+  
+  const goToFinancing = () => {
+    navigate("/financing");
+  };
+  
+  const goToPaymentMethods = () => {
+    navigate("/payment-methods");
+  };
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
@@ -22,7 +30,8 @@ const Dashboard = () => {
         <nav className="flex items-center space-x-8 text-sm font-medium text-gray-700">
           <a href="#" className="text-blue-600">Dashboard</a>
           <a href="#" onClick={(e) => { e.preventDefault(); goToInvoice(); }}>Invoices</a>
-          <a href="#">Financing</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); goToFinancing(); }}>Financing</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); goToPaymentMethods(); }}>Payment Methods</a>
           <a href="#">Analytics</a>
           <a href="#" onClick={(e) => { e.preventDefault(); goToBankDetails(); }}>Bank Details</a>
           <a href="#">Settings</a>
@@ -97,20 +106,25 @@ const Dashboard = () => {
               description="Get instant advance of up to 100% on your eligible invoices."
               icon="⚡"
             />
-            <ActionCard
-              title="Payment Collection"
-              description="Track payments and send automated reminders to clients."
-              icon="💳"
-            />
-            <div className="bg-white border rounded-lg p-4 flex flex-col space-y-3 items-center shadow-sm hover:shadow-md cursor-pointer" onClick={goToBankDetails}>
+            <div className="bg-white border rounded-lg p-4 flex space-x-4 items-start shadow-sm hover:shadow-md cursor-pointer" onClick={goToPaymentMethods}>
+              <div className="text-2xl">💳</div>
+              <div>
+                <h3 className="text-sm font-semibold">Payment Collection</h3>
+                <p className="text-sm text-gray-600">Track payments and manage your payment methods.</p>
+                <button className="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+                  Manage Payment Methods
+                </button>
+              </div>
+            </div>
+            <div className="bg-white border rounded-lg p-4 flex space-x-4 items-start shadow-sm hover:shadow-md cursor-pointer" onClick={goToBankDetails}>
               <div className="text-2xl">🏦</div>
-              <div className="text-center">
+              <div>
                 <h3 className="text-sm font-semibold">Bank Details</h3>
                 <p className="text-sm text-gray-600">Manage your bank account information for payments.</p>
-              </div>
-              <button className="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+                <button className="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
                 Manage Bank Details
               </button>
+              </div>
             </div>
           </div>
         </div>
