@@ -1,3 +1,4 @@
+// Cards.jsx - Card management component
 import React, { useState } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
