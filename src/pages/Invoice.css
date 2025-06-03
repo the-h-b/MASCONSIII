@@ -1,0 +1,133 @@
+.invoice-page {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.invoice-container {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.add-item-btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.add-item-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.invoice-table input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.invoice-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.tax-discount {
+  flex: 1;
+  min-width: 300px;
+}
+
+.tax-discount label {
+  display: block;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  color: #374151;
+}
+
+.tax-type-box {
+  background-color: #f3f4f6;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.tax-discount select,
+.tax-discount input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 0.25rem;
+}
+
+.invoice-summary {
+  flex: 1;
+  min-width: 300px;
+  background-color: #f9fafb;
+  padding: 1rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.invoice-summary p {
+  margin: 0.25rem 0;
+  font-size: 15px;
+  color: #374151;
+}
+
+.invoice-summary h3 {
+  margin-top: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Navigation styling */
+nav a {
+  text-decoration: none;
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+nav a.active, 
+nav a.text-blue-600 {
+  color: #2563eb;
+}
